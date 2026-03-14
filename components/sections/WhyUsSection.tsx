@@ -2,7 +2,7 @@
 
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Settings, Users, HeadphonesIcon, Award, DollarSign } from 'lucide-react';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { cn } from '@/lib/utils';
 
 interface WhyUsSectionProps {
@@ -10,99 +10,81 @@ interface WhyUsSectionProps {
   dict: any;
 }
 
-const advantages = [
-  { icon: Settings, titleKey: 'custom_title', descKey: 'custom_desc' },
-  { icon: Users, titleKey: 'team_title', descKey: 'team_desc' },
-  { icon: HeadphonesIcon, titleKey: 'support_title', descKey: 'support_desc' },
-  { icon: Award, titleKey: 'quality_title', descKey: 'quality_desc' },
-  { icon: DollarSign, titleKey: 'pricing_title', descKey: 'pricing_desc' },
-];
+const WHY_US_LOTTIE_SRC =
+  'https://lottie.host/16b69e12-0efb-4061-b33d-12dc2b93fd84/Ax2k12jKRd.lottie';
 
 export default function WhyUsSection({ locale, dict }: WhyUsSectionProps) {
   const isRTL = locale === 'ar';
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.12 },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: 'easeOut' as const },
-    },
-  };
+  const heading =
+    dict?.whyus?.heading ??
+    (isRTL ? 'لماذا تختار شركة فُلك؟' : 'Why Choose Fulk Company?');
+  const description =
+    dict?.whyus?.description ??
+    (isRTL
+      ? 'فُلك شريكك التقني في رحلة التحول الرقمي. نقدم حلولًا برمجية متكاملة ومخصصة تساعد شركتك على النمو، رفع الكفاءة، وتسريع إنجاز الأعمال عبر فريق احترافي وخبرة عملية في تنفيذ المشاريع.'
+      : 'Fulk is your technology partner in digital transformation. We deliver integrated, tailored software solutions that help your business grow, improve efficiency, and accelerate execution through an expert team and hands-on project experience.');
+  const seasonTitle =
+    dict?.whyus?.season_title ?? (isRTL ? 'هدفنا معك' : 'Our Commitment');
+  const seasonDescription =
+    dict?.whyus?.season_description ??
+    (isRTL
+      ? 'نهدف إلى بناء حلول تقنية موثوقة تواكب احتياجاتك الحقيقية، مع دعم مستمر وجودة عالية تضمن نتائج ملموسة وتأثيرًا طويل المدى على أعمالك.'
+      : 'We are committed to building reliable technology solutions aligned with your real business needs, backed by ongoing support and high quality to deliver measurable, long-term impact.');
 
   return (
     <section
       ref={sectionRef}
       className={cn(
-        'py-24 bg-white',
-        
+        'py-10 md:py-16 bg-[#EAEAEA] overflow-hidden'
       )}
       dir={isRTL ? 'rtl' : 'ltr'}
     >
-      <div className="max-w-7xl mx-auto px-4">
-        {/* Section Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1F4B8F] mb-4">
-            {dict.whyus.title}
-          </h2>
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-            {dict.whyus.subtitle}
-          </p>
-          <div className="w-20 h-1 bg-[#2F6EDB] mx-auto rounded-full mt-4" />
-        </motion.div>
+      <div className="max-w-7xl mx-auto px-5 md:px-8">
+        <div className="bg-white rounded-[28px] md:rounded-[36px] px-6 md:px-12 lg:px-16 py-10 md:py-14 lg:py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <motion.div
+              className="flex justify-center lg:justify-start"
+              initial={{ opacity: 0, x: isRTL ? 40 : -40 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.65, ease: 'easeOut' as const }}
+            >
+              <div className="w-[280px] sm:w-[350px] md:w-[410px] lg:w-[460px]">
+                <DotLottieReact
+                  src={WHY_US_LOTTIE_SRC}
+                  loop
+                  autoplay
+                  className="w-full h-auto"
+                />
+              </div>
+            </motion.div>
 
-        {/* Advantages Grid */}
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-        >
-          {advantages.map((advantage, index) => {
-            const Icon = advantage.icon;
-            return (
-              <motion.div
-                key={advantage.titleKey}
-                className={cn(
-                  'group relative bg-[#F5F7FB] rounded-2xl p-8 border border-transparent hover:border-[#E8EEF9] hover:bg-white hover:shadow-xl transition-all duration-300',
-                  index === 4 && 'sm:col-span-2 lg:col-span-1 lg:col-start-2'
-                )}
-                variants={cardVariants}
-                whileHover={{ y: -6 }}
-              >
-                {/* Accent line */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0 group-hover:w-16 h-1 bg-[#2F6EDB] rounded-full transition-all duration-300" />
+            <motion.div
+              className="max-w-2xl"
+              initial={{ opacity: 0, x: isRTL ? -40 : 40 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.65, delay: 0.1, ease: 'easeOut' as const }}
+            >
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0F4C97] leading-[1.15] mb-5 md:mb-6">
+                {heading}
+              </h2>
 
-                <div className="w-14 h-14 rounded-xl bg-[#E8EEF9] flex items-center justify-center mb-6 group-hover:bg-[#1F4B8F] transition-colors duration-300">
-                  <Icon className="w-7 h-7 text-[#1F4B8F] group-hover:text-white transition-colors duration-300" />
-                </div>
+              <p className="text-[#8A8A8A] text-base sm:text-lg md:text-[1.12rem] leading-[1.6] mb-8 md:mb-10">
+                {description}
+              </p>
 
-                <h3 className="text-xl font-bold text-[#1F4B8F] mb-3">
-                  {dict.whyus[advantage.titleKey]}
-                </h3>
+              <h3 className="text-2xl sm:text-3xl md:text-[2.15rem] font-bold text-[#5B5B5B] mb-3 md:mb-4">
+                {seasonTitle}
+              </h3>
 
-                <p className="text-gray-500 leading-relaxed">
-                  {dict.whyus[advantage.descKey]}
-                </p>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+              <p className="text-[#8A8A8A] text-base sm:text-lg md:text-[1.12rem] leading-[1.6]">
+                {seasonDescription}
+              </p>
+            </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
