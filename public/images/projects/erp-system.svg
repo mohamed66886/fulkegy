@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d3b77"/>
+      <stop offset="100%" stop-color="#2f8fd8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="700" fill="url(#g)"/>
+  <circle cx="1030" cy="100" r="220" fill="#ffffff22"/>
+  <rect x="80" y="520" width="520" height="90" rx="16" fill="#ffffff22"/>
+  <text x="110" y="580" font-size="56" font-family="Arial, sans-serif" fill="#fff" font-weight="700">ERP System</text>
+</svg>

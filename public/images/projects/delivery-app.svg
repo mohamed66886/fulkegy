@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b3c78"/>
+      <stop offset="100%" stop-color="#22b8cf"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="700" fill="url(#g)"/>
+  <path d="M0 520 C220 430 390 640 610 530 C790 440 930 590 1200 500 L1200 700 L0 700 Z" fill="#ffffff1f"/>
+  <text x="120" y="560" font-size="56" font-family="Arial, sans-serif" fill="#fff" font-weight="700">Delivery Mobile App</text>
+</svg>

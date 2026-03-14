@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    --background: #F5F7FB;
+    --foreground: #1a1a2e;
+    --card: #FFFFFF;
+    --primary: #1F4B8F;
+    --secondary: #2F6EDB;
+    --accent: #E8EEF9;
+  }
+
+  .dark {
+    --background: #0f172a;
+    --foreground: #e2e8f0;
+    --card: #1e293b;
+    --primary: #3b82f6;
+    --secondary: #60a5fa;
+    --accent: #1e3a5f;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-24 px-4;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .glass {
+    @apply bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg;
+  }
+
+  .gradient-primary {
+    @apply bg-gradient-to-br from-[#1F4B8F] to-[#2F6EDB];
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-[#1F4B8F] to-[#2F6EDB] bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
+
+::selection {
+  background-color: #2F6EDB;
+  color: white;
+}

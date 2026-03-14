@@ -1,0 +1,9 @@
+<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="hGr<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="hGr<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="hGr<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="http<svg xmlns="hGr<svg xm offset="100%" stop-color="#1fb6ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="700" fill="url(#g)"/>
+  <circle cx="300" cy="300" r="170" fill="#ffffff17"/>
+  <circle cx="520" cy="300" r="170" fill="#ffffff17"/>
+  <rect x="260" y="280" width="300" height="40" rx="20" fill="#ffffff44"/>
+  <text x="120" y="590" font-size="56" font-family="Arial, sans-serif" fill="#fff" font-weight="700">Fitness Tracking App</text>
+</svg>
