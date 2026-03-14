@@ -6,6 +6,7 @@ import { Search, ArrowRight, ArrowLeft, User, Calendar } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import PageHero from '@/components/sections/PageHero';
 
 interface BlogPageProps {
   locale: string;
@@ -110,12 +111,10 @@ const allTagsAr = Array.from(new Set(blogPosts.flatMap((p) => p.tagsAr)));
 
 export function BlogPage({ locale, dict }: BlogPageProps) {
   const isRTL = locale === 'ar';
-  const heroRef = useRef(null);
   const contentRef = useRef(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
-  const heroInView = useInView(heroRef, { once: true });
   const contentInView = useInView(contentRef, { once: true, margin: '-100px' });
 
   const allTags = isRTL ? allTagsAr : allTagsEn;
@@ -156,30 +155,12 @@ export function BlogPage({ locale, dict }: BlogPageProps) {
 
   return (
     <div className={cn()} dir={isRTL ? 'rtl' : 'ltr'}>
-      {/* Hero Banner */}
-      <section
-        ref={heroRef}
-        className="relative py-32 md:py-40 bg-gradient-to-br from-[#1F4B8F] via-[#2F6EDB] to-[#1F4B8F] overflow-hidden"
-      >
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-20 w-96 h-96 bg-white rounded-full blur-3xl" />
-        </div>
-        <motion.div
-          className="max-w-7xl mx-auto px-4 text-center relative z-10"
-          initial={{ opacity: 0, y: 40 }}
-          animate={heroInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            {dict.blog.title}
-          </h1>
-          <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto">
-            {dict.blog.subtitle}
-          </p>
-          <div className="w-24 h-1 bg-white/50 mx-auto rounded-full mt-8" />
-        </motion.div>
-      </section>
+      <PageHero
+        locale={locale}
+        title={dict.blog.title}
+        subtitle={dict.blog.subtitle}
+        badge={isRTL ? 'المدونة' : 'Blog'}
+      />
 
       {/* Content Section */}
       <section ref={contentRef} className="py-24 bg-[#F5F7FB]">

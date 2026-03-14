@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import PageHero from '@/components/sections/PageHero';
 
 interface ServicesPageProps {
   locale: string;
@@ -167,11 +168,9 @@ const processSteps = [
 
 export function ServicesPage({ locale, dict }: ServicesPageProps) {
   const isRTL = locale === 'ar';
-  const heroRef = useRef(null);
   const servicesRef = useRef(null);
   const processRef = useRef(null);
 
-  const heroInView = useInView(heroRef, { once: true });
   const servicesInView = useInView(servicesRef, { once: true, margin: '-100px' });
   const processInView = useInView(processRef, { once: true, margin: '-100px' });
 
@@ -196,30 +195,12 @@ export function ServicesPage({ locale, dict }: ServicesPageProps) {
 
   return (
     <div className={cn()} dir={isRTL ? 'rtl' : 'ltr'}>
-      {/* Hero Banner */}
-      <section
-        ref={heroRef}
-        className="relative py-32 md:py-40 bg-gradient-to-br from-[#1F4B8F] via-[#2F6EDB] to-[#1F4B8F] overflow-hidden"
-      >
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-20 w-96 h-96 bg-white rounded-full blur-3xl" />
-        </div>
-        <motion.div
-          className="max-w-7xl mx-auto px-4 text-center relative z-10"
-          initial={{ opacity: 0, y: 40 }}
-          animate={heroInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            {dict.services.title}
-          </h1>
-          <p className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto">
-            {dict.services.subtitle}
-          </p>
-          <div className="w-24 h-1 bg-white/50 mx-auto rounded-full mt-8" />
-        </motion.div>
-      </section>
+      <PageHero
+        locale={locale}
+        title={dict.services.title}
+        subtitle={dict.services.subtitle}
+        badge={isRTL ? 'الخدمات' : 'Our Services'}
+      />
 
       {/* Services Detail Section */}
       <section ref={servicesRef} className="py-24 bg-[#F5F7FB]">
